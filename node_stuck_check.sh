@@ -30,6 +30,7 @@ do
  echo "LastBlockCount: " $lastBlockCount
  echo "LastShelleyBlock: " $shelleyLastBlockCount
  echo "DeltaCount: " $deltaBlockCount
+ echo  $(jcli rest v0 node stats get -h http://127.0.0.1:${REST_PORT}/api | grep uptime)
 
  if [[ $(echo $shelleyExplorerJson | grep -o '"message":"[^"]*' | cut -d'"' -f4) == *"Couldn't find block's contents in explorer"* || $deltaBlockCount -gt $deltaMax ]]; then
      now=$(date +"%r")
